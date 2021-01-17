@@ -4,3 +4,5 @@
 ./data
 
 ./src/files/data.txt
+
+.DS_Store
