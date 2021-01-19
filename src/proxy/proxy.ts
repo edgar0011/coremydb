@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import express, { Request, Response, NextFunction } from "express";
 import { AddressInfo } from 'net'
-import * as dotenv from "dotenv";
 import cors from "cors";
 import helmet from "helmet";
 import HttpException from '../types/HttpException'
@@ -13,6 +12,7 @@ app.use(cors());
 console.log('proxy', createProxyMiddleware)
 
 // eslint-disable-next: NextFunction-line @typescript-eslint/no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.get('', (req: Request, res: Response, next: NextFunction) => {
   // console.log('Request', req)
   // console.log('Response', res)
@@ -61,9 +61,10 @@ const proxyOptions:any = {
   //   console.log('proxyRes.statusCode', proxyRes.statusCode)
   //   console.log('res.statusCode', res.statusCode)
   // },
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onProxyError(err: HttpException, req: Request, res: Response) {
     console.log('onProxyError', err)
-  }
+  },
 }
 
 
@@ -84,4 +85,4 @@ process.on('unhandledRejection', (reason?: string) => {
 })
 
 
-export default function() {}
+export default server

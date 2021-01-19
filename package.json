@@ -5,17 +5,18 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
-    "dev:proxy:ts": "nodemon --watch 'src/**/*.ts' --exec  ts-node src/proxy/proxy.ts",
-    "start:proxy": "tsc && nodemon src/proxy/proxy.js",
-    "lint": "eslint ./src"
+    "start": "node -r esm src/server.js",
+    "dev": "nodemon -r esm src/server.js",
+    "dev:proxy": "nodemon -r esm --watch 'src/**/*.ts' --exec  ts-node src/proxy/proxy.ts",
+    "start:proxy": "tsc && nodemon -r esm src/proxy/proxy.js",
+    "lint": "eslint --ignore *.js ./src"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "helmet": "^4.3.1",
     "http-proxy-middleware": "^1.0.6",
@@ -28,6 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
     "eslint": "^7.18.0",
+    "eslint-plugin-import": "^2.22.1",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }

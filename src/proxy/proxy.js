@@ -49,6 +49,7 @@ app.use(helmet_1.default());
 app.use(cors_1.default());
 console.log('proxy', http_proxy_middleware_1.createProxyMiddleware);
 // eslint-disable-next: NextFunction-line @typescript-eslint/no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.get('', function (req, res, next) {
     // console.log('Request', req)
     // console.log('Response', res)
@@ -94,9 +95,10 @@ var proxyOptions = {
     //   console.log('proxyRes.statusCode', proxyRes.statusCode)
     //   console.log('res.statusCode', res.statusCode)
     // },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     onProxyError: function (err, req, res) {
         console.log('onProxyError', err);
-    }
+    },
 };
 app.use('/neolane', http_proxy_middleware_1.createProxyMiddleware(proxyOptions));
 var server = app.listen(process.env.PORT || 8080, function () {
@@ -110,5 +112,4 @@ process.on('uncaughtException', function (err) {
 process.on('unhandledRejection', function (reason) {
     throw reason; // you should handle all exceptions in tests explixitly
 });
-function default_1() { }
-exports.default = default_1;
+exports.default = server;
