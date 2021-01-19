@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add -D @typescript-eslint
+  /usr/local/bin/node /usr/local/bin/yarn
 
 PATH: 
   /opt/homebrew/sbin:/opt/homebrew/sbin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin:/opt/homebrew/opt:/Library/Apple/usr/bin:/opt/homebrew/sbin
@@ -14,17 +14,12 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@typescript-eslint: Request "https://registry.yarnpkg.com/@typescript-eslint" returned a 405
-      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66997:18)
-      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140662:22)
-      at Request.emit (events.js:315:20)
-      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141634:10)
-      at Request.emit (events.js:315:20)
-      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141556:12)
-      at Object.onceWrapper (events.js:421:28)
-      at IncomingMessage.emit (events.js:327:22)
-      at endReadableNT (internal/streams/readable.js:1327:12)
-      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+  SyntaxError: /Users/martinweiser/Work/projects/javascript/coremydb/package.json: Unexpected token } in JSON at position 1216
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:321:13
 
 npm manifest: 
   {
@@ -34,10 +29,10 @@ npm manifest:
     "main": "server.js",
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "node src/server.js",
-      "dev": "nodemon src/server.js",
-      "dev:proxy:ts": "nodemon --watch 'src/**/*.ts' --exec  ts-node src/proxy/proxy.ts",
-      "start:proxy": "tsc && nodemon src/proxy/proxy.js",
+      "start": "node -r esm src/server.js",
+      "dev": "nodemon -r esm src/server.js",
+      "dev:proxy": "nodemon -r esm --watch 'src/**/*.ts' --exec  ts-node src/proxy/proxy.ts",
+      "start:proxy": "tsc && nodemon -r esm src/proxy/proxy.js",
       "lint": "eslint --ignore *.js ./src"
     },
     "author": "",
@@ -45,6 +40,7 @@ npm manifest:
     "dependencies": {
       "cors": "^2.8.5",
       "dotenv": "^8.2.0",
+      "esm": "^3.2.25",
       "express": "^4.17.1",
       "helmet": "^4.3.1",
       "http-proxy-middleware": "^1.0.6",
@@ -59,7 +55,12 @@ npm manifest:
       "eslint": "^7.18.0",
       "eslint-plugin-import": "^2.22.1",
       "ts-node": "^9.1.1",
-      "typescript": "^4.1.3"
+      "typescript": "^4.1.3",
+      "eslint-config-prettier": "^7.2.0",
+      "eslint-plugin-prettier": "^3.3.1",
+      "prettier": "^2.2.1",
+      "prettier-eslint": "^12.0.0",
+      "prettier-eslint-cli": "^5.0.0",
     }
   }
 
@@ -985,6 +986,11 @@ Lockfile:
       table "^6.0.4"
       text-table "^0.2.0"
       v8-compile-cache "^2.0.3"
+  
+  esm@^3.2.25:
+    version "3.2.25"
+    resolved "https://registry.yarnpkg.com/esm/-/esm-3.2.25.tgz#342c18c29d56157688ba5ce31f8431fbb795cc10"
+    integrity sha512-U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==
   
   espree@^7.3.0, espree@^7.3.1:
     version "7.3.1"
