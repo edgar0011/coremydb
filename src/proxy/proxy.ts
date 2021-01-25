@@ -36,7 +36,6 @@ const router = async (req: Request): Promise<string> => {
   })
 }
 
-
 const proxyOptions:any = {
   target: 'https://jsonplaceholder.typicode.com',
   router,

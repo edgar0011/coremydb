@@ -2,7 +2,7 @@ import util from 'util'
 import { EventEmitter } from 'events'
 import files from './files/index.js'
 
-console.log('import.meta.url', import.meta.url)
+// console.log('import.meta.url', import.meta.url)
 console.log('util', util)
 console.log('EventEmitter', EventEmitter)
 
@@ -15,6 +15,8 @@ eventBus.on('data', (...rest) => {
     console.log('data handler:', rest)
 
 })
+const data = {};
+const browser = data?.browser;
 
 console.log('emit event')
 eventBus.emit('data', { message: ' hello ' })
