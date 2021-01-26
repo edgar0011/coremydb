@@ -3,6 +3,8 @@ node_modules
 
 data
 
+dist
+
 src/files/data.txt
 
 .DS_Store
