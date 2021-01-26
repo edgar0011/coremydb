@@ -1,0 +1,50 @@
+{
+  "name": "coremydb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "yarn babel ./src --out-dir dist --copy-files",
+    "start": "node dist/server.js",
+    "dev": "nodemon --exec babel-node src/server.js",
+    "dev:proxy": "nodemon --watch 'src/**/*.ts' --exec ts-node src/proxy/proxy.ts",
+    "start:proxy": "tsc && node src/proxy/proxy.js",
+    "lint": "eslint --ignore *.js ./src",
+    "prepush": "yarn lint && yarn tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "core-js": "^3.8.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.3.1",
+    "http-proxy-middleware": "^1.0.6",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/plugin-transform-async-to-generator": "^7.12.1",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/register": "^7.8.3",
+    "@types/cors": "^2.8.9",
+    "@types/express": "^4.17.11",
+    "@types/http-proxy-middleware": "^0.19.3",
+    "@typescript-eslint/eslint-plugin": "^4.14.0",
+    "@typescript-eslint/parser": "^4.14.0",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "husky": "^4.3.8",
+    "prettier": "^2.2.1",
+    "prettier-eslint": "^12.0.0",
+    "prettier-eslint-cli": "^5.0.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  }
+}
