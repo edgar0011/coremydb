@@ -11,13 +11,18 @@
     "dev:proxy": "nodemon --watch 'src/**/*.ts' --exec ts-node src/proxy/proxy.ts",
     "dev2:proxy": "nodemon --watch 'src/**/*.ts' --exec babel-node -- -x '.ts,.tsx,.js,.jsx' src/proxy/proxy.ts",
     "start:proxy": "tsc && node src/proxy/proxy.js",
-    "lint": "eslint --ignore *.js ./src",
+    "lint": "eslint ./src",
     "prepush": "yarn lint && yarn tsc",
-    "play": "nodemon --exec babel-node --  scripts/playground.js"
+    "play": "nodemon --exec babel-node --  scripts/playground.js",
+    "play2": "nodemon --exec babel-node --  scripts/playground2.js",
+    "docker:build": "docker build -t edgar0011/coremydb .",
+    "docker:run": "docker run -p 8080:8080 -d edgar0011/coremydb"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
+    "baconjs": "^3.0.17",
     "core-js": "^3.8.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -25,6 +30,7 @@
     "faker": "^5.4.0",
     "helmet": "^4.3.1",
     "http-proxy-middleware": "^1.0.6",
+    "node-fetch": "^2.6.1",
     "nodemon": "^2.0.7"
   },
   "devDependencies": {
@@ -35,6 +41,7 @@
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-typescript": "^7.12.16",
     "@babel/register": "^7.8.3",
+    "@earlorg/eslint-config": "^1.2.16",
     "@types/cors": "^2.8.9",
     "@types/express": "^4.17.11",
     "@types/http-proxy-middleware": "^0.19.3",
@@ -49,6 +56,6 @@
     "prettier-eslint": "^12.0.0",
     "prettier-eslint-cli": "^5.0.0",
     "ts-node": "^9.1.1",
-    "typescript": "^4.1.3"
+    "typescript": "^3.8.0"
   }
 }
