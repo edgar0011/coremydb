@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "yarn babel ./src --out-dir dist --copy-files",
+    "build": "yarn babel -x '.ts,.tsx,.js,.jsx' ./src --out-dir dist",
     "start": "node dist/server.js",
     "dev": "nodemon --exec babel-node src/server.js",
     "dev:proxy": "nodemon --watch 'src/**/*.ts' --exec ts-node src/proxy/proxy.ts",
