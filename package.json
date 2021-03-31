@@ -10,7 +10,7 @@
     "dev": "nodemon --exec babel-node src/server.js",
     "dev:proxy": "nodemon --watch 'src/**/*.ts' --exec ts-node src/proxy/proxy.ts",
     "dev2:proxy": "nodemon --watch 'src/**/*.ts' --exec babel-node -- -x '.ts,.tsx,.js,.jsx' src/proxy/proxy.ts",
-    "start:proxy": "tsc && node src/proxy/proxy.js",
+    "start:proxy": "tsc && node dist/proxy/proxy.js",
     "lint": "eslint ./src",
     "prepush": "yarn lint && yarn tsc",
     "play": "nodemon --exec babel-node --  scripts/playground.js",
